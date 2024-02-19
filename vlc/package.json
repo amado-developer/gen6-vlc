@@ -4,9 +4,13 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.9.5",
+    "@chakra-ui/core": "^0.8.0",
     "@chakra-ui/icons": "^2.1.1",
+    "@chakra-ui/layout": "^2.3.1",
     "@chakra-ui/react": "^2.8.2",
     "@chakra-ui/table": "^2.1.0",
+    "@dnd-kit/core": "^6.1.0",
+    "@dnd-kit/sortable": "^8.0.0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@testing-library/jest-dom": "^5.17.0",
@@ -16,14 +20,20 @@
     "@types/node": "^16.18.82",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
+    "emotion-theming": "^11.0.0",
     "framer-motion": "^11.0.5",
     "graphql": "^16.8.1",
     "lodash": "^4.17.21",
     "ra-data-graphql": "^4.16.11",
     "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-calendar-timeline": "^0.28.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
+    "uuid": "^9.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -49,5 +59,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-beautiful-dnd": "^13.1.8",
+    "@types/react-calendar-timeline": "^0.28.6",
+    "@types/uuid": "^9.0.8"
   }
 }

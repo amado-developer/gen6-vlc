@@ -12,6 +12,9 @@ import {
   from,
 } from "@apollo/client";
 
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 const link = from([new HttpLink({ uri: "http://localhost:8080/graphql" })]);
 const client = new ApolloClient({
   link,
@@ -26,7 +29,9 @@ root.render(
     <ApolloProvider client={client}>
       <ChakraProvider theme={theme}>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <App />
+        <DndProvider backend={HTML5Backend}>
+          <App />
+        </DndProvider>
       </ChakraProvider>
     </ApolloProvider>
   </React.StrictMode>

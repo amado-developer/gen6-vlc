@@ -1,10 +1,10 @@
-import SimpleButton from "./global/simpleButton";
-import SimpleTable from "./global/simpleTable";
-import Select from "./global/dropdown";
+import SimpleButton from "./global/SimpleButton";
+import SimpleTable from "./global/SimpleTable";
+import Select from "./global/Dropdown";
+import _ from "lodash";
 import { useEffect, useState } from "react";
 import { EditIcon, ViewIcon } from "@chakra-ui/icons";
 import { QUERY_GET_BY_STATUS } from "../graphql/Queries";
-import _ from "lodash";
 import { useQuery } from "@apollo/client";
 
 type Channel = {
@@ -16,9 +16,9 @@ type Channel = {
 };
 
 const Channels = () => {
-  const [edit, setEdit] = useState<Boolean>(false);
+  const [edit, setEdit] = useState<boolean>(false);
   const [channels, setChannels] = useState<Channel[]>([]);
-  const [channelsHeader, setChannelsHeader] = useState<String[]>([
+  const [channelsHeader, setChannelsHeader] = useState<string[]>([
     "Channel",
     "Creation Date",
     "Created By",

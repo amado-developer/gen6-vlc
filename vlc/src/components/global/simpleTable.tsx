@@ -1,4 +1,5 @@
 import { ResponsiveValue } from "@chakra-ui/react";
+import { v4 as uuidv4 } from "uuid";
 import {
   Table,
   TableCaption,
@@ -27,7 +28,7 @@ const SimpleTable = ({ variant, caption, headers, body }: SimpleTableProps) => {
         <Thead>
           <Tr>
             {headers.map((header: String, index) => (
-              <Th key={index}>{header}</Th>
+              <Th key={uuidv4()}>{header}</Th>
             ))}
           </Tr>
         </Thead>
@@ -38,7 +39,7 @@ const SimpleTable = ({ variant, caption, headers, body }: SimpleTableProps) => {
                 {Object.keys(property)
                   .filter((e) => e !== "id" && e !== "__typename")
                   .map((key) => (
-                    <Td key={key}>{property[key]}</Td>
+                    <Td key={uuidv4()}>{property[key]}</Td>
                   ))}
               </Tr>
             ))}

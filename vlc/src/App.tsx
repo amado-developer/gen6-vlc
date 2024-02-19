@@ -1,14 +1,22 @@
-import Tabs from "./components/global/tabs";
-import Channels from "./components/channels";
-import ThemeToggle from "./components/global/themeToggle";
+import Tabs from "./components/global/Tabs";
+import Channels from "./components/Channels";
+import AddChannel from "./components/AddChannel";
+import Timeline from "./components/TimeLine";
+import ThemeToggle from "./components/global/ThemeToggle";
+
+import { v4 as uuidv4 } from "uuid";
 
 const App = () => {
   return (
     <div className="App">
       <ThemeToggle />
       <Tabs
-        children={[<Channels />, <div>Table</div>, <div>Form</div>]}
-        tabList={["Channels", "Edit Channel", "Create Channel"]}
+        children={[
+          <Channels key={uuidv4()} />,
+          <AddChannel key={uuidv4()} />,
+          <Timeline key={uuidv4()} />,
+        ]}
+        tabList={["Channels", "Create Channel", "Edit Channel"]}
       />
     </div>
   );
