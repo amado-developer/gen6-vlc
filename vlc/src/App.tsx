@@ -1,10 +1,15 @@
-import Tabs from "./components/tabs";
-import ThemeToggle from "./components/themeToggle";
+import Tabs from "./components/global/tabs";
+import Channels from "./components/channels";
+import ThemeToggle from "./components/global/themeToggle";
+
 const App = () => {
   return (
     <div className="App">
       <ThemeToggle />
-      <Tabs />
+      <Tabs
+        children={[<Channels />, <div>Table</div>, <div>Form</div>]}
+        tabList={["Channels", "Edit Channel", "Create Channel"]}
+      />
     </div>
   );
 };

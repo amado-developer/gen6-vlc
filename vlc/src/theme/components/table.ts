@@ -2,7 +2,7 @@ import type { StyleFunctionProps } from "@chakra-ui/styled-system";
 
 const table = {
   variants: {
-    striped: (props: StyleFunctionProps) => {
+    simple: (props: StyleFunctionProps) => {
       const color: string = props.colorMode === "dark" ? "white" : "brand.800";
 
       return {
@@ -21,11 +21,9 @@ const table = {
         },
         tbody: {
           tr: {
-            _even: {
-              bg: "brand.100",
-            },
-            _odd: {
-              bg: "brand.200",
+            bg: props.colorMode === "dark" ? "#2a2a2a" : "white",
+            _hover: {
+              bg: "brand.400",
             },
           },
         },

@@ -1,39 +1,94 @@
-import {
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/table";
+import SimpleButton from "./global/simpleButton";
+import SimpleTable from "./global/simpleTable";
+import Select from "./global/dropdown";
+import { useEffect, useState } from "react";
+import { EditIcon, ViewIcon } from "@chakra-ui/icons";
+import { QUERY_GET_BY_STATUS } from "../graphql/Queries";
+import _ from "lodash";
+import { useQuery } from "@apollo/client";
+
+type Channel = {
+  id: string;
+  title: string;
+  dateCreated: string;
+  author: string;
+  status: string;
+};
 
 const Channels = () => {
+  const [edit, setEdit] = useState<Boolean>(false);
+  const [channels, setChannels] = useState<Channel[]>([]);
+  const [channelsHeader, setChannelsHeader] = useState<String[]>([
+    "Channel",
+    "Creation Date",
+    "Created By",
+    "Status",
+  ]);
+  const [filter, setFilter] = useState<string>("Published");
+  const { loading, error, data } = useQuery(QUERY_GET_BY_STATUS, {
+    variables: { status: filter },
+  });
+
+  useEffect(() => {
+    if (data) {
+      setChannels(data.getChannelsByStatus);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    const editChannels = channels.map((channel) => {
+      return {
+        ...channel,
+        edit: (
+          <EditIcon
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              console.log(channel.title);
+            }}
+          />
+        ),
+      };
+    });
+
+    const noEditChannels = _.map(channels, (channel) => {
+      return _.omit(channel, "edit");
+    });
+
+    setChannels(edit ? editChannels : noEditChannels);
+    setChannelsHeader(
+      edit
+        ? [...channelsHeader, "Edit"]
+        : ["Channel", "Creation Date", "Created By", "Status"]
+    );
+  }, [edit]);
+
   return (
-    <TableContainer>
-      <Table variant="striped">
-        <TableCaption>Virtual Channels List</TableCaption>
-        <Thead>
-          <Tr>
-            <Th>Channel</Th>
-            <Th>Date Created</Th>
-            <Th>Created by</Th>
-            <Th>Status</Th>
-            <Th>Edit</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          <Tr>
-            <Td>inches</Td>
-            <Td>millimetres (mm)</Td>
-            <Td>25.4</Td>
-            <Td>25.4</Td>
-            <Td>25.4</Td>
-          </Tr>
-        </Tbody>
-      </Table>
-    </TableContainer>
+    <>
+      <Select
+        options={[
+          { value: "Published", label: "Published" },
+          { value: "Draft", label: "Draft" },
+        ]}
+        variant="filled"
+        onChange={(e: any) => {
+          setFilter(e);
+        }}
+      />
+      <SimpleButton
+        variant="solid"
+        text={!edit ? "Edit" : "View"}
+        onClick={() => {
+          setEdit(!edit);
+        }}
+        icon={!edit ? <EditIcon /> : <ViewIcon />}
+      />
+      <SimpleTable
+        variant="simple"
+        headers={channelsHeader}
+        body={channels}
+        caption={"Virtual Channels"}
+      />
+    </>
   );
 };
 
