@@ -1,13 +1,5 @@
-import { Card, Text, Image } from "@chakra-ui/react";
-
-type TimelineCardProps = {
-  title: string;
-  duration: number;
-  description: string;
-  startTime: string;
-  endTime: string;
-  image: string;
-};
+import { Card, Text, CardBody, Box, Flex } from "@chakra-ui/react";
+import { convertSecondsToHMS } from "../../utils/index";
 const TimelineCard = ({
   title,
   duration,
@@ -15,15 +7,27 @@ const TimelineCard = ({
   startTime,
   endTime,
   image,
-}: TimelineCardProps) => {
+}: Content) => {
   return (
-    <Card variant="timeline">
-      <Text>{title}</Text>
-      <Text>{duration}</Text>
-      <Text>{description}</Text>
-      <Text>{startTime}</Text>
-      <Text>{endTime}</Text>
-      <Image src={image} alt={title} width={100} height={100} />
+    <Card
+      variant="timeline"
+      style={{
+        backgroundImage: `url(${image})`,
+      }}
+    >
+      <CardBody>
+        <Flex align="center" justify="space-between">
+          <Box maxW="50%">
+            <Text fontSize="2xl">{title}</Text>
+            <Text as="i">"{description}"</Text>
+            <Text>Duration: {convertSecondsToHMS(duration)}</Text>
+          </Box>
+          <Box>
+            <Text mb="4">Start Time: {startTime}</Text>
+            <Text>End Time: {endTime}</Text>
+          </Box>
+        </Flex>
+      </CardBody>
     </Card>
   );
 };

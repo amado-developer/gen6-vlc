@@ -5,6 +5,7 @@ import Table from "./components/table";
 import Button from "./components/button";
 import Select from "./components/select";
 import Card from "./components/card";
+import Input from "./components/input";
 import brand from "./foundations/brand";
 
 const config: ThemeConfig = {
@@ -18,12 +19,14 @@ const overrides = {
   colors: {
     brand,
   },
+
   components: {
     Tabs,
     Table,
     Button,
     Select,
     Card,
+    Input,
   },
 };
 

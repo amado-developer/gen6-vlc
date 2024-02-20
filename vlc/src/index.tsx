@@ -25,14 +25,12 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <ChakraProvider theme={theme}>
-        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <DndProvider backend={HTML5Backend}>
-          <App />
-        </DndProvider>
-      </ChakraProvider>
-    </ApolloProvider>
-  </React.StrictMode>
+  <ApolloProvider client={client}>
+    <ChakraProvider theme={theme}>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+      <DndProvider backend={HTML5Backend}>
+        <App />
+      </DndProvider>
+    </ChakraProvider>
+  </ApolloProvider>
 );

@@ -1,6 +1,6 @@
 [
   {
-    "id": 0,
+    "id": "0",
     "title": "Die Hard",
     "description": "An NYPD officer tries to save his wife and several others taken hostage by German",
     "duration": 3600,
@@ -9,7 +9,7 @@
     "image": "https://media.cinemacloud.co.uk/imageFilm/412_1_1.jpg"
   },
   {
-    "id": 1,
+    "id": "1",
     "title": "Family Man",
     "description": "A fast-lane investment broker, offered the opportunity to see how the other half lives, wakes up to find that his sports car and girlfriend have become a mini-van and wife.",
     "duration": 1800,
@@ -18,12 +18,66 @@
     "image": "https://images.squarespace-cdn.com/content/v1/57856deee58c62418fa4beb3/1482416692617-Q1CXUCNTX5VJEDGGSSI5/image-asset.jpeg?format=2500w"
   },
   {
-    "id": 2,
-    "title": "Harry Potter and the Philosopher's Stone",
+    "id": "2",
+    "title": "Harry Potter",
     "description": "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
     "duration": 900,
     "startTime": "01:30",
     "endTime": "01:45",
+    "image": "https://filmartgallery.com/cdn/shop/files/Harry-Potter-and-the-Philosophers-Stone-British-Movie-Poster-Quad-Size-395-Vintage-Movie-Poster-Original-British-Quad-30x40.jpg?v=1706065280"
+  },
+  {
+    "id": "3",
+    "title": "Amazin Spider-Man 2",
+    "description": "Spider-Man squares off against the Rhino and the powerful Electro while struggling to keep his promise to leave Gwen Stacey out of his dangerous life.",
+    "duration": 3600,
+    "startTime": "01:45",
+    "endTime": "02:45",
+    "image": "https://m.media-amazon.com/images/S/pv-target-images/ea2abd1b735e6736c569bebf1744c8fb7eb1ef1c72a4e7db9b75ade6c235775c.jpg"
+  },
+  {
+    "id": "4",
+    "title": "Family Man",
+    "description": "A fast-lane investment broker, offered the opportunity to see how the other half lives, wakes up to find that his sports car and girlfriend have become a mini-van and wife.",
+    "duration": 1800,
+    "startTime": "02:45",
+    "endTime": "03:15",
+    "image": "https://images.squarespace-cdn.com/content/v1/57856deee58c62418fa4beb3/1482416692617-Q1CXUCNTX5VJEDGGSSI5/image-asset.jpeg?format=2500w"
+  },
+  {
+    "id": "5",
+    "title": "Harry Potter",
+    "description": "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
+    "duration": 900,
+    "startTime": "03:15",
+    "endTime": "03:30",
+    "image": "https://filmartgallery.com/cdn/shop/files/Harry-Potter-and-the-Philosophers-Stone-British-Movie-Poster-Quad-Size-395-Vintage-Movie-Poster-Original-British-Quad-30x40.jpg?v=1706065280"
+  },
+  {
+    "id": "6",
+    "title": "Die Hard",
+    "description": "An NYPD officer tries to save his wife and several others taken hostage by German",
+    "duration": 3600,
+    "startTime": "03:30",
+    "endTime": "04:30",
+    "image": "https://media.cinemacloud.co.uk/imageFilm/412_1_1.jpg"
+  },
+  {
+    "id": "7",
+    "title": "Family Man",
+    "description": "A fast-lane investment broker, offered the opportunity to see how the other half lives, wakes up to find that his sports car and girlfriend have become a mini-van and wife.",
+    "duration": 1800,
+    "startTime": "04:30",
+    "endTime": "05:00",
+    "image": "https://images.squarespace-cdn.com/content/v1/57856deee58c62418fa4beb3/1482416692617-Q1CXUCNTX5VJEDGGSSI5/image-asset.jpeg?format=2500w"
+  },
+  {
+    "id": "8",
+    "title": "Harry Potter",
+    "description": "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
+    "duration": 900,
+    "startTime": "05:00",
+    "endTime": "05:15",
     "image": "https://filmartgallery.com/cdn/shop/files/Harry-Potter-and-the-Philosophers-Stone-British-Movie-Poster-Quad-Size-395-Vintage-Movie-Poster-Original-British-Quad-30x40.jpg?v=1706065280"
   }
 ]

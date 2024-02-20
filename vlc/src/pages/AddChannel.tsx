@@ -1,44 +1,99 @@
-import { ChangeEvent } from "react";
-import { dateConverter } from "../utils";
+import { ChangeEvent, useEffect, useState } from "react";
+import { assignStartAndEndTime } from "../utils";
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
   FormHelperText,
   Input,
+  Box,
+  Button,
+  Flex,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { AddIcon } from "@chakra-ui/icons";
+import Timeline from "../components/Timeline/Timeline";
+import SimpleModal from "../components/global/SimpleModal";
+import ContentModalBody from "../components/ContentModal/ContentModalBody";
 
 export const AddChannel = () => {
   const [creationDate, setCreationDate] = useState<string>("");
   const [channelName, setChannelName] = useState<string>("");
+  const [content, setContent] = useState<Content[]>([]);
+  const [parsedContent, setParsedContent] = useState<Content[]>([]);
+  const [open, setOpen] = useState<boolean>(false);
+
+  const isDisabled = (): boolean => {
+    return channelName === "" || creationDate === "" || content.length === 0;
+  };
 
   useEffect(() => {
-    console.log(dateConverter(creationDate));
-  }, [creationDate]);
+    if (content.length > 0) {
+      const newContent = assignStartAndEndTime(content);
+      setParsedContent(newContent);
+    }
+  }, [content]);
+
   return (
-    <FormControl id="channel">
-      <FormLabel>Channel</FormLabel>
-      <Input
-        type="text"
-        value={channelName}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setChannelName(e.target.value)
+    <Box mt="4" mb="8">
+      <SimpleModal
+        open={open}
+        setOpen={setOpen}
+        title="Add Content"
+        body={<ContentModalBody content={content} setContent={setContent} />}
+        footer={
+          <Button
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
+            Close
+          </Button>
         }
       />
-      <FormHelperText>Enter the channel name</FormHelperText>
+      <FormControl id="channel">
+        <Flex justify="flex-end">
+          <Button isDisabled={isDisabled()} mr="4" variant="solid">
+            Save
+          </Button>
+          <Button isDisabled={isDisabled()} variant="solid">
+            Save & Publish
+          </Button>
+        </Flex>
+        <FormLabel>Channel</FormLabel>
+        <Input
+          type="text"
+          value={channelName}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setChannelName(e.target.value)
+          }
+        />
+        <FormHelperText>Enter the channel name</FormHelperText>
 
-      <FormLabel>Author</FormLabel>
-      <Input type="text" value="Amado" disabled />
+        <FormLabel>Author</FormLabel>
+        <Input type="text" value="Amado" disabled />
 
-      <FormLabel>Creation Date</FormLabel>
-      <Input
-        type="datetime-local"
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setCreationDate(e.target.value)
-        }
-      />
-    </FormControl>
+        <FormLabel>Creation Date</FormLabel>
+        <Input
+          mb="8"
+          type="datetime-local"
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setCreationDate(e.target.value)
+          }
+        />
+        <Box>
+          <Flex justify="flex-end">
+            <Button leftIcon={<AddIcon />} onClick={() => setOpen(true)}>
+              Add Content
+            </Button>
+          </Flex>
+        </Box>
+      </FormControl>
+
+      {content && (
+        <Box>
+          <Timeline data={parsedContent} />
+        </Box>
+      )}
+    </Box>
   );
 };
 
