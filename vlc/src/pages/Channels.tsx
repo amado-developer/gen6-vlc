@@ -10,12 +10,7 @@ import { QUERY_GET_BY_STATUS } from "../graphql/Queries";
 import { useQuery } from "@apollo/client";
 import { Box, Flex } from "@chakra-ui/layout";
 
-type ChannelsProps = {
-  setCurrentTab: (tab: number) => void;
-  setChannelID: (id: string) => void;
-};
-
-const Channels = ({ setCurrentTab, setChannelID }: ChannelsProps) => {
+const Channels = () => {
   const [edit, setEdit] = useState<boolean>(false);
   const [channels, setChannels] = useState<Channel[]>([]);
   const [channelsHeader, setChannelsHeader] = useState<string[]>([
@@ -52,16 +47,7 @@ const Channels = ({ setCurrentTab, setChannelID }: ChannelsProps) => {
     const editChannels = channels.map((channel: Channel) => {
       return {
         ...channel,
-        edit: (
-          <EditIcon
-            style={{ cursor: "pointer" }}
-            onClick={() => {
-              console.log(channel);
-              setChannelID(channel.channelID);
-              setCurrentTab(2);
-            }}
-          />
-        ),
+        edit: <EditIcon style={{ cursor: "pointer" }} />,
       };
     });
 

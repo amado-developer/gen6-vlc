@@ -45,22 +45,25 @@ export const Channel = ({ isEdit, channelId }: ChannelProps) => {
     return channelName === "" || creationDate === "" || content.length === 0;
   };
 
-  const { data } = useQuery(QUERY_GET_CHANNEL_BY_ID, {
+  const channelByID = useQuery(QUERY_GET_CHANNEL_BY_ID, {
     skip: !isEdit,
     variables: { channelID: channelId },
   });
 
-  if (isEdit) {
-    console.log(data);
-  }
-
-  const initData = () => {};
+  const initData = () => {
+    if (channelByID.data) {
+      console.log(channelByID.data.getChannelByID);
+      const channel = channelByID.data.getChannelByID;
+      setChannelName(channel.title);
+      setAuthor(channel.author);
+    }
+  };
 
   useEffect(() => {
     if (isEdit) {
       initData();
     }
-  }, [isEdit]);
+  }, []);
 
   useEffect(() => {
     if (content.length > 0) {
