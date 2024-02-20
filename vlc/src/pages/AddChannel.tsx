@@ -17,6 +17,7 @@ import ContentModalBody from "../components/ContentModal/ContentModalBody";
 export const AddChannel = () => {
   const [creationDate, setCreationDate] = useState<string>("");
   const [channelName, setChannelName] = useState<string>("");
+  const [author, setAuthor] = useState<string>("");
   const [content, setContent] = useState<Content[]>([]);
   const [parsedContent, setParsedContent] = useState<Content[]>([]);
   const [open, setOpen] = useState<boolean>(false);
@@ -68,10 +69,16 @@ export const AddChannel = () => {
         />
         <FormHelperText>Enter the channel name</FormHelperText>
 
-        <FormLabel>Author</FormLabel>
-        <Input type="text" value="Amado" disabled />
+        <FormLabel mt={8}>Author</FormLabel>
+        <Input
+          type="text"
+          value={author}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setAuthor(e.target.value)
+          }
+        />
 
-        <FormLabel>Creation Date</FormLabel>
+        <FormLabel mt={8}>Creation Date</FormLabel>
         <Input
           mb="8"
           type="datetime-local"
@@ -88,7 +95,7 @@ export const AddChannel = () => {
         </Box>
       </FormControl>
 
-      {content && (
+      {parsedContent && parsedContent.length > 0 && (
         <Box>
           <Timeline data={parsedContent} />
         </Box>

@@ -6,6 +6,7 @@ import Button from "./components/button";
 import Select from "./components/select";
 import Card from "./components/card";
 import Input from "./components/input";
+import FormLabel from "./components/formLabel";
 import brand from "./foundations/brand";
 
 const config: ThemeConfig = {
@@ -27,6 +28,7 @@ const overrides = {
     Select,
     Card,
     Input,
+    FormLabel,
   },
 };
 
