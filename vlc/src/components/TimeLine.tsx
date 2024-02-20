@@ -6,7 +6,9 @@ import {
 } from "@dnd-kit/sortable";
 import { SortableItem } from "./SortableItem";
 import { useState } from "react";
+import Data from "../data.json";
 
+console.log(Data);
 const hours = Array.from(
   { length: 24 },
   (_, index) => index.toString().padStart(2, "0") + ":00"
@@ -20,16 +22,12 @@ const Timeline: React.FC = () => {
   ]);
 
   function handleDragEnd(event: { active: any; over: any }) {
-    console.log("Drag end called");
     const { active, over } = event;
-    console.log("ACTIVE: " + active.id);
-    console.log("OVER :" + over.id);
 
     if (active.id !== over.id) {
       setLanguages((items) => {
         const activeIndex = items.indexOf(active.id);
         const overIndex = items.indexOf(over.id);
-        console.log(arrayMove(items, activeIndex, overIndex));
         return arrayMove(items, activeIndex, overIndex);
       });
     }

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Die Hard",
+    "duration": 3600,
+    "image": "https://media.cinemacloud.co.uk/imageFilm/412_1_1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Family Man",
+    "duration": 1800,
+    "image": "https://images.squarespace-cdn.com/content/v1/57856deee58c62418fa4beb3/1482416692617-Q1CXUCNTX5VJEDGGSSI5/image-asset.jpeg?format=2500w"
+  },
+  {
+    "id": 3,
+    "name": "Harry Potter and the Philosopher's Stone",
+    "duration": 900,
+    "image": "https://filmartgallery.com/cdn/shop/files/Harry-Potter-and-the-Philosophers-Stone-British-Movie-Poster-Quad-Size-395-Vintage-Movie-Poster-Original-British-Quad-30x40.jpg?v=1706065280"
+  }
+]
