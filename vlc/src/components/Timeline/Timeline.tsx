@@ -54,12 +54,12 @@ const Timeline = ({ data }: TimelineProps) => {
     <div style={{ display: "flex" }}>
       <div style={{ marginRight: "5%", marginTop: "20px" }}>
         {hours.map((hour: string) => (
-          <div key={uuidv4()} style={{ color: "white", marginBottom: "80px" }}>
+          <div key={uuidv4()} style={{ color: "white", marginBottom: "160px" }}>
             <Text>{hour}</Text>
           </div>
         ))}
       </div>
-      <div style={{ marginRight: "10px", marginTop: "20px" }}>
+      <div style={{ marginRight: "10px", marginTop: "20px", width: "100%" }}>
         <DndContext
           collisionDetection={closestCenter}
           onDragEnd={handleDragEnd}
