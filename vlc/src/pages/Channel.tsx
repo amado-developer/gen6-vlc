@@ -1,5 +1,21 @@
+import Timeline from "../components/Timeline/Timeline";
+import SimpleModal from "../components/global/SimpleModal";
+import ContentModalBody from "../components/ContentModal/ContentModalBody";
+
+import { v4 as uuidv4 } from "uuid";
 import { ChangeEvent, useEffect, useState } from "react";
 import { assignStartAndEndTime } from "../utils";
+import {
+  MUTATION_CREATE_CHANNEL,
+  MUTATION_CREATE_CONTENT,
+} from "../graphql/Mutations";
+
+import {
+  QUERY_GET_CHANNEL_BY_ID,
+  QUERY_GET_CONTENT_BY_CHANNEL,
+} from "../graphql/Queries";
+
+import { useMutation, useQuery } from "@apollo/client";
 import {
   FormControl,
   FormLabel,
@@ -10,21 +26,41 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
-import Timeline from "../components/Timeline/Timeline";
-import SimpleModal from "../components/global/SimpleModal";
-import ContentModalBody from "../components/ContentModal/ContentModalBody";
 
-export const AddChannel = () => {
+type ChannelProps = {
+  isEdit?: boolean;
+  channelId?: string;
+};
+export const Channel = ({ isEdit, channelId }: ChannelProps) => {
   const [creationDate, setCreationDate] = useState<string>("");
   const [channelName, setChannelName] = useState<string>("");
   const [author, setAuthor] = useState<string>("");
   const [content, setContent] = useState<Content[]>([]);
   const [parsedContent, setParsedContent] = useState<Content[]>([]);
   const [open, setOpen] = useState<boolean>(false);
+  const [createChannel] = useMutation(MUTATION_CREATE_CHANNEL);
+  const [createContent] = useMutation(MUTATION_CREATE_CONTENT);
 
   const isDisabled = (): boolean => {
     return channelName === "" || creationDate === "" || content.length === 0;
   };
+
+  const { data } = useQuery(QUERY_GET_CHANNEL_BY_ID, {
+    skip: !isEdit,
+    variables: { channelID: channelId },
+  });
+
+  if (isEdit) {
+    console.log(data);
+  }
+
+  const initData = () => {};
+
+  useEffect(() => {
+    if (isEdit) {
+      initData();
+    }
+  }, [isEdit]);
 
   useEffect(() => {
     if (content.length > 0) {
@@ -32,6 +68,35 @@ export const AddChannel = () => {
       setParsedContent(newContent);
     }
   }, [content]);
+
+  const saveChannel = (status: string) => {
+    const UUID = uuidv4();
+    createChannel({
+      variables: {
+        channelID: UUID,
+        title: channelName,
+        dateCreated: creationDate,
+        author: author,
+        status,
+      },
+    });
+
+    parsedContent.forEach((c: Content) => {
+      createContent({
+        variables: {
+          channelID: UUID,
+          title: c.title,
+          description: c.description,
+          duration: c.duration.toString(),
+          startTime: c.startTime,
+          endTime: c.endTime,
+          image: c.image,
+        },
+      });
+    });
+
+    window.location.reload();
+  };
 
   return (
     <Box mt="4" mb="8">
@@ -52,10 +117,19 @@ export const AddChannel = () => {
       />
       <FormControl id="channel">
         <Flex justify="flex-end">
-          <Button isDisabled={isDisabled()} mr="4" variant="solid">
+          <Button
+            isDisabled={isDisabled()}
+            mr="4"
+            variant="solid"
+            onClick={() => saveChannel("Draft")}
+          >
             Save
           </Button>
-          <Button isDisabled={isDisabled()} variant="solid">
+          <Button
+            isDisabled={isDisabled()}
+            variant="solid"
+            onClick={() => saveChannel("Publish")}
+          >
             Save & Publish
           </Button>
         </Flex>
@@ -104,4 +178,4 @@ export const AddChannel = () => {
   );
 };
 
-export default AddChannel;
+export default Channel;

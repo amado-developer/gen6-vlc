@@ -10,4 +10,13 @@ declare global {
     endTime: string;
     image: string;
   };
+
+  type Channel = {
+    id: string;
+    channelID: string;
+    title: string;
+    dateCreated: string;
+    author: string;
+    status: string;
+  };
 }

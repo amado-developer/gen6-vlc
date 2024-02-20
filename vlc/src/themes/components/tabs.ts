@@ -1,18 +1,23 @@
+import { StyleFunctionProps } from "@chakra-ui/react";
+
 const tabs = {
-  baseStyle: {
-    tablist: {
-      color: "white",
-    },
-    tab: {
-      _selected: {
-        color: "brand.50",
-        bg: "brand.500",
+  baseStyle: (props: StyleFunctionProps) => {
+    const color: string = props.colorMode === "dark" ? "white" : "brand.800";
+    return {
+      tablist: {
+        color,
       },
-      _hover: {
-        color: "brand.50",
-        bg: "brand.400",
+      tab: {
+        _selected: {
+          color: "brand.50",
+          bg: "brand.500",
+        },
+        _hover: {
+          color: "brand.50",
+          bg: "brand.400",
+        },
       },
-    },
+    };
   },
 };
 

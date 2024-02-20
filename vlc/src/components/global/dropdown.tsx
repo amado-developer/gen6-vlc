@@ -14,6 +14,7 @@ const Dropdown = ({ options, variant, onChange }: SelectProps) => {
   return (
     <div>
       <Select
+        cursor="pointer"
         variant={variant}
         mb={10}
         onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
