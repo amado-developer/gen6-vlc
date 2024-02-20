@@ -1,6 +1,6 @@
-import SimpleButton from "./global/SimpleButton";
-import SimpleTable from "./global/SimpleTable";
-import Select from "./global/Dropdown";
+import SimpleButton from "../components/global/SimpleButton";
+import SimpleTable from "../components/global/SimpleTable";
+import Select from "../components/global/Dropdown";
 import _ from "lodash";
 import { useEffect, useState } from "react";
 import { EditIcon, ViewIcon } from "@chakra-ui/icons";

@@ -4,6 +4,7 @@ import Tabs from "./components/tabs";
 import Table from "./components/table";
 import Button from "./components/button";
 import Select from "./components/select";
+import Card from "./components/card";
 import brand from "./foundations/brand";
 
 const config: ThemeConfig = {
@@ -22,6 +23,7 @@ const overrides = {
     Table,
     Button,
     Select,
+    Card,
   },
 };
 

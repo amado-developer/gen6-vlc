@@ -1,7 +1,7 @@
 import Tabs from "./components/global/Tabs";
-import Channels from "./components/Channels";
-import AddChannel from "./components/AddChannel";
-import Timeline from "./components/TimeLine";
+import Channels from "./pages/Channels";
+import AddChannel from "./pages/AddChannel";
+import Timeline from "./components/Timeline/Timeline";
 import ThemeToggle from "./components/global/ThemeToggle";
 
 import { v4 as uuidv4 } from "uuid";

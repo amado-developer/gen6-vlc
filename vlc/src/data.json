@@ -1,20 +1,29 @@
 [
   {
-    "id": 1,
+    "id": 0,
     "title": "Die Hard",
+    "description": "An NYPD officer tries to save his wife and several others taken hostage by German",
     "duration": 3600,
+    "startTime": "00:00",
+    "endTime": "01:00",
     "image": "https://media.cinemacloud.co.uk/imageFilm/412_1_1.jpg"
   },
   {
-    "id": 2,
-    "name": "Family Man",
+    "id": 1,
+    "title": "Family Man",
+    "description": "A fast-lane investment broker, offered the opportunity to see how the other half lives, wakes up to find that his sports car and girlfriend have become a mini-van and wife.",
     "duration": 1800,
+    "startTime": "01:00",
+    "endTime": "01:30",
     "image": "https://images.squarespace-cdn.com/content/v1/57856deee58c62418fa4beb3/1482416692617-Q1CXUCNTX5VJEDGGSSI5/image-asset.jpeg?format=2500w"
   },
   {
-    "id": 3,
-    "name": "Harry Potter and the Philosopher's Stone",
+    "id": 2,
+    "title": "Harry Potter and the Philosopher's Stone",
+    "description": "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
     "duration": 900,
+    "startTime": "01:30",
+    "endTime": "01:45",
     "image": "https://filmartgallery.com/cdn/shop/files/Harry-Potter-and-the-Philosophers-Stone-British-Movie-Poster-Quad-Size-395-Vintage-Movie-Poster-Original-British-Quad-30x40.jpg?v=1706065280"
   }
 ]
