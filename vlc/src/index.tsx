@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import theme from "./theme/index";
+import theme from "./themes/index";
 import { ChakraProvider } from "@chakra-ui/react";
 import { ColorModeScript } from "@chakra-ui/color-mode";
 import {
@@ -25,14 +25,12 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <ChakraProvider theme={theme}>
-        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <DndProvider backend={HTML5Backend}>
-          <App />
-        </DndProvider>
-      </ChakraProvider>
-    </ApolloProvider>
-  </React.StrictMode>
+  <ApolloProvider client={client}>
+    <ChakraProvider theme={theme}>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+      <DndProvider backend={HTML5Backend}>
+        <App />
+      </DndProvider>
+    </ChakraProvider>
+  </ApolloProvider>
 );

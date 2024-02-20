@@ -1,21 +1,26 @@
+import TimelineCard from "./TimelineCard";
 import { useSortable } from "@dnd-kit/sortable";
-import { Card } from "@chakra-ui/react";
 import { CSS } from "@dnd-kit/utilities";
 
-export function SortableItem(props: any) {
+type SortableItemProps = {
+  id: string;
+  props: Content;
+};
+
+export const SortableItem = (props: SortableItemProps) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    width: "100px",
-    height: "100px",
+    marginLeft: "10px",
+    marginBottom: "8px",
   };
-
+  const { props: timelineCardProps } = props;
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <Card>{props.id}</Card>
+      <TimelineCard {...timelineCardProps} />
     </div>
   );
-}
+};
